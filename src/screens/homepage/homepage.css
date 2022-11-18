@@ -1,0 +1,13 @@
+.home{
+    background: url(../../shared/img/vector_mascotas.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+.home-content .see-more{
+    text-decoration: none;
+    background: #17a2b8;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,15 @@
+.product h6{
+    padding: 10px 0;
+    margin-bottom: 0 !important;
+    color: var(--black);
+}
+.product{
+    text-decoration: none;
+    color: #000000;
+}
+.product img{
+    height: 200px;
+}
+.product:hover{
+    color: #000000;
+}
