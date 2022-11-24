@@ -47,7 +47,7 @@ const postAd = async (req, res) => {
         await advertise.save();
 
         res.status(201).json({
-            msg: 'Posted advertise successfully',
+            msg: 'Publicado exitosamente',
         })
     } catch (err) {
         console.log(err.message)
