@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const auth = require('../middleware/auth')
-const { postAd, getAllAds, getAdById, getAllAdsByUser, relatedAds, deleteAdById, adsOfUser } = require('../controllers/advertiseController')
+const { postAd, getAllAds, getAdById, getAllAdsByUser, relatedAds, deleteAdById, adsOfUser, getAllAdsMap } = require('../controllers/advertiseController')
 const upload = require('../utils/multer')
 
 // @ route post: /api/postad
@@ -19,6 +19,11 @@ router.post('/api/ads', getAllAds)
 // @ route get: /api/ads/:id
 // @ desc get single ad by id
 // @ access public
+
+//
+router.post('/api/adsmap', getAllAdsMap)
+
+//
 
 router.get('/api/ads/:id', getAdById)
 

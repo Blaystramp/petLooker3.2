@@ -41,6 +41,14 @@ const advertiseSchema = mongoose.Schema({
     isVacunas: {
         type: Boolean,
         default: false
+    },
+    latitude: {
+        type: Number,
+        required: true
+    },
+    longitude: {
+        type: Number,
+        required: true
     }
 }, { timestamps: true })
 

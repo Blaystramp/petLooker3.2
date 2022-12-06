@@ -16,3 +16,7 @@ export const relatedAdsURL = "/api/user/relatedads"
 export const adsOfUserURL = "/api/user/ads2/"
 export const deleteAdURL = "/api/ads/"
 export const changePassURL = "/api/user/forgot-password"
+
+//
+
+export const adsMapURL = "/api/adsmap"

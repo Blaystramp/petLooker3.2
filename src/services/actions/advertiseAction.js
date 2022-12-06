@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import Axios from 'axios'
 import { postAdURL, adsURL, relatedAdsURL } from '../../API/api'
 import { setAuthToken } from '../../utils/setAuthToken'
-import FormData from 'form-data'
+import FormData, { from } from 'form-data'
 
 
 // post advertise
@@ -20,7 +20,7 @@ export const postAd = (data, history) => async dispatch => {
         }
     }
     let form = new FormData();
-    const { región, area, category, condicion, title, description, edad, isVacunas, files } = data
+    const { región, area, category, condicion, title, description, edad, isVacunas, latitude, longitude, files } = data
     form.append("región", región)
     form.append("area", area)
     form.append("category", category)
@@ -29,6 +29,8 @@ export const postAd = (data, history) => async dispatch => {
     form.append("description", description)
     form.append("edad", edad)
     form.append("isVacunas", isVacunas)
+    form.append("latitude", latitude)
+    form.append("longitude", longitude)
     for (let i = 0; i < files.length; i++) {
         form.append("image", files[i].file)
     }

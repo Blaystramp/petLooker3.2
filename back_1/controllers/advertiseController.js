@@ -6,9 +6,9 @@ var mongoose = require('mongoose');
 // post an advertise
 const postAd = async (req, res) => {
 
-    const { región, area, category, condicion, title, description, edad, isVacunas } = req.body
+    const { región, area, category, condicion, title, description, edad, isVacunas, latitude, longitude } = req.body
 
-    if (!región || !area || !category || !condicion || !title || !description || !edad || !isVacunas) {
+    if (!región || !area || !category || !condicion || !title || !description || !edad || !isVacunas || !latitude ||!longitude) {
         return res.json({
             msg: "Por favor, complete todos los campos"
         })
@@ -42,7 +42,9 @@ const postAd = async (req, res) => {
             title: title,
             description: description,
             edad: edad,
-            isVacunas: isVacunas
+            isVacunas: isVacunas,
+            latitude: latitude,
+            longitude: longitude
         })
         await advertise.save();
 
@@ -90,6 +92,21 @@ const getAllAds = async (req, res) => {
             totalPages: Math.ceil(count / limit),
             currentPage: page
         });
+    } catch (err) {
+        res.json({
+            msg: "Algo salió mal"
+        })
+    }
+}
+
+
+// get all ads Map
+const getAllAdsMap = async (req, res) => {
+    try {
+
+        const result = await Advertise.find()
+        res.status(200).json(result)
+        
     } catch (err) {
         res.json({
             msg: "Algo salió mal"
@@ -224,4 +241,4 @@ const deleteAdById = async (req, res) => {
 }
 
 
-module.exports = { postAd, getAllAds, getAdById, getAllAdsByUser, relatedAds, deleteAdById, adsOfUser }
+module.exports = { postAd, getAllAds, getAdById, getAllAdsByUser, relatedAds, deleteAdById, adsOfUser ,getAllAdsMap }

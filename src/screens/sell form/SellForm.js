@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -91,6 +91,30 @@ const SellForm = ({ history, postAd, loading }) => {
       data.files = files;
       postAd(data, history)
     }
+  };
+
+const [lat, setLat] = useState(null);
+const [lng, setLng] = useState(null);
+const [status, setStatus] = useState(null);
+
+  useEffect(() => {
+    getLocation();
+  },[]);
+
+  const getLocation = () => {
+       if (!navigator.geolocation) {
+            setStatus('Geolocation is not supported by your browser');
+       } else {
+            setStatus('Locating...');
+            navigator.geolocation.getCurrentPosition((position) => {
+                 setStatus(null);
+                 setLat(position.coords.latitude);
+                 setLng(position.coords.longitude);
+            }, () => {
+                 setStatus('Unable to retrieve your location');
+            });
+       }
+       
   };
 
   return (
@@ -224,6 +248,26 @@ const SellForm = ({ history, postAd, loading }) => {
                   <option value="false">No</option>
                 </select>
               </div>
+
+              <div className="latitude mb-3">
+                <h6>Latitud</h6>
+                {errors.isVacunas && <p className="error">latitude es Obligatorio</p>}
+                <select name="latitude" ref={register({ required: true })}>
+                  <option value={lat}>{lat}</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+
+              <div className="longitude mb-3">
+                <h6>Longitud</h6>
+                {errors.isVacunas && <p className="error">longitude es Obligatorio</p>}
+                <select name="longitude" ref={register({ required: true })}>
+                  <option value={lng}>{lng}</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+
+
               <button disabled={loading && true} className={loading && 'not-allowed'} type="submit"> {loading ? <span> Publicando... <MiniLoader /> </span> : "Publicar"}  </button>
             </form>
           </Col>

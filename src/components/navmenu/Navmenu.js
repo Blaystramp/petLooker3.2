@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 const Navmenu = ({ isAuth, logoutUser }) => {
 
     const navbarWithoutLogin = <Nav className="ml-auto">
+        <NavLink className="nav-link mx-2" to="/map">Mapa</NavLink>
         <NavLink className="nav-link mx-2" to="/allads">Todos los anuncios</NavLink>
         <NavLink className="nav-link mx-2" to="/login">Ingresar</NavLink>
         <NavLink className="nav-link mx-2" to="/register">Registrar</NavLink>
@@ -16,6 +17,7 @@ const Navmenu = ({ isAuth, logoutUser }) => {
     </Nav>
 
     const navbarWithLogin = <Nav className="ml-auto">
+        <NavLink className="nav-link mx-2" to="/map">Mapa</NavLink>
         <NavLink className="nav-link mx-2" to="/profile">Perfil</NavLink>
         <NavLink className="nav-link mx-2" to="/allads">Todos los anuncios</NavLink>
         <Link onClick={() => logoutUser()} to="/" className="nav-link mx-2">Salir</Link>

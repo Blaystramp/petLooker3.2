@@ -37,6 +37,9 @@ import ForgetpPass from './screens/resetpass/reset';
 import AdminLogin from './screens/admin/Admins'
 
 import AdvertisesAdmin from './screens/all advertises/AdvertisesAdmin';
+import MapApp from './screens/map/mapads';
+
+import MapTest from './screens/map/maptest';
 
 const App = ({ loginOAuth, history }) => {
 
@@ -73,6 +76,8 @@ const App = ({ loginOAuth, history }) => {
         <Route exact path="/forget-pass" component={ForgetpPass} />
         <Route exact path="/admin" component={AdminLogin} />
         <Route exact path="/adminads" component={AdvertisesAdmin} />
+        <Route exact path="/maptest" component={MapTest} />
+        <Route exact path="/map" component={MapApp} />
 
         <Route component={NotFound} />
         

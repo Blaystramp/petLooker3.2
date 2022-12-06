@@ -144,6 +144,7 @@ const ProductList = ({ ads, getAdLoading, getAd, page }) => {
                                     <div className="row">
                                         {ads.length > 0 ? ads.map((ad, index) => {
                                             return <div key={index} className="col-md-3">
+                                                
                                                 <Product ad={ad} />
                                             </div>
                                         }) : <h3 style={{ textAlign: "center", width: "100%" }}> {getAdLoading === false && "No hay anuncios"} </h3>}
